@@ -4,14 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"webpack -w",
+    "start": "node server.js",
+    "server:dev": "nodemon server.js",
+    "build": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^1.18.8",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
