@@ -16,7 +16,17 @@
   .header { grid-area: header; }
 
   .calories { grid-area: calories; }
-
+      .circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        height: 120px;
+        background: green;
+        -moz-border-radius: 60px;
+        -webkit-border-radius: 60px;
+        border-radius: 60px;      
+    }
   .diary { grid-area: diary; }
 
   .search { grid-area: search; }
