@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientFound = document.querySelector('#search-result');
     const resultView = new ResultView(ingredientFound);
     resultView.bindEvents();
-
+    
     const ingredientSearch = new Ingredient();
     ingredientSearch.bindEventsSearchIngredient();
 
