@@ -1,11 +1,24 @@
-body {
+  body {
     text-align: center;
-    background: #e6ecff;
+    background: cream;
   }
   
-  textarea {
-    display: block;
-    margin: 1.5em auto;
-    width: 20em;
-    height: 10em;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    grid-template-areas: 
+        "header header calories"
+        "search results diary" 
+        "search results diary";
   }
+
+  .header { grid-area: header; }
+
+  .calories { grid-area: calories; }
+
+  .diary { grid-area: diary; }
+
+  .search { grid-area: search; }
+
+  .results { grid-area: results; }
