@@ -1,31 +1,33 @@
 const PubSub = require('../helpers/pub_sub.js');
-
+const Ingredient = require('../models/ingredient.js');
 const ResultView = function(resultContainer) {
     this.resultContainer = resultContainer;
+    this.ingredientFound = "started empty";
+    this.chosenFood = "started empty";
 };
+
 
 ResultView.prototype.bindEvents = function () {
     console.log("Result view bindEvents Function");
     PubSub.subscribe('Ingredient:api-results', (event) => {
-        const ingredientFound = event.detail; 
-        console.log('The ingredient is here! from results view', ingredientFound.calories, ingredientFound); 
-        this.render(ingredientFound);
+        this.ingredientFound = event.detail; 
+        console.log('The ingredient is here! from results view', this.ingredientFound.calories, this.ingredientFound); 
+        this.render()
+    });
+    PubSub.subscribe('IngredientForm:inputtedText', (event) => {
+        this.chosenFood = event.detail
+        console.log('The ingredient is here! from results view', this.chosenFood); 
     });
 };
 
-ResultView.prototype.render = function(ingredientFound){
+ResultView.prototype.render = function(){
     this.resultContainer.innerHTML = '';
-    PubSub.subscribe('IngredientForm:inputtedText', (event) => {
-    console.log(event.detail); 
-    });
-
-    console.log('PRERENDER RENDER',ingredientFound);
-    
-    let calories = ingredientFound.calories;
-    let weight = ingredientFound.totalWeight;
-    let dietLabel = ingredientFound.dietLabels;
+    let chosenFood = this.chosenFood;
+    let calories = this.ingredientFound.calories;
+    let weight = this.ingredientFound.totalWeight;
+    let dietLabel = this.ingredientFound.dietLabels;
     console.log('---------------------------------');
-    console.log( calories,weight,dietLabel);
+    console.log( chosenFood,calories,weight,dietLabel);
 };
 
 module.exports = ResultView;

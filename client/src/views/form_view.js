@@ -4,7 +4,7 @@ const FormView = function (element) {
     this.element = element;   
 };
 
-FormView.prototype.bindEventsSearchIngredient = function() {
+FormView.prototype.bindEvents = function() {
         this.element.addEventListener('submit', (event) => {
         event.preventDefault();
         const inputtedText = event.target.text.value;

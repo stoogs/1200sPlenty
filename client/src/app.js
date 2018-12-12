@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //Get value from submitted form
     const ingredientForm = document.querySelector('#ingredient-form');
     const formView = new FormView(ingredientForm);
-    formView.bindEventsSearchIngredient();
+    formView.bindEvents();
   
     const ingredientFound = document.querySelector('#search-result');
     const resultView = new ResultView(ingredientFound);
     resultView.bindEvents();
-    
+   
     const ingredientSearch = new Ingredient();
-    ingredientSearch.bindEventsSearchIngredient();
+    ingredientSearch.bindEvents();
 
   });
