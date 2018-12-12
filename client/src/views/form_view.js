@@ -8,7 +8,7 @@ FormView.prototype.bindEventsSearchIngredient = function() {
         this.element.addEventListener('submit', (event) => {
         event.preventDefault();
         const inputtedText = event.target.text.value;
-        console.log(inputtedText);
+        // console.log(inputtedText);
         PubSub.publish('IngredientForm:inputtedText', inputtedText);
         this.element.reset();
     });
