@@ -33,22 +33,24 @@
  
 /* SEARCH */
   .search { grid-area: search;
-  
   border-radius: 10px;
 	overflow: hidden;
 	background: whitesmoke;
 	box-shadow:  0 2px 4px 0 hsla(0,0%,0%,0.1);
-  padding: 10px;
-
+  padding: 0px;
   }
-
-    .search #ingredient-form input{
-      font-size: 1.25rem;
-      background-color: hsl(220,12%,95%);
-      box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1);
-      /* box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1); */
-      padding: 0.5rem;
-    }
+    .search #just-typed {
+      color: hsl(0,0%,13%);
+      font-size: 2rem;
+      padding: 15px;
+    } 
+      .search #ingredient-form input{
+        font-size: 1.25rem;
+        background-color: hsl(220,12%,95%);
+        box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1);
+        /* box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1); */
+        padding: 0.5rem;
+      }
 
 /* RESULTS */
     .results { grid-area: results; 

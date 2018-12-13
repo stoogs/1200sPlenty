@@ -12,10 +12,16 @@ const Ingredient = function () {
   
   Ingredient.prototype.bindEvents = function(searched) {
     PubSub.subscribe('IngredientForm:inputtedText', (event) => {
-        this.ingredient = event.detail;
-        // console.log('subscribed ingredient...',this.ingredient);
-        // console.log('apikey app_id...', this.Api_Id);
-        // console.log('apikey app_key...', this.Api_Key);
+        let sortedIngredient = event.detail;
+            console.log(sortedIngredient)
+            let arraySortedIngredient = sortedIngredient.split(' ');
+            console.log(arraySortedIngredient)
+            let quantity = arraySortedIngredient[0];
+            console.log("quantity", quantity)
+            let onlyIngredients = arraySortedIngredient.slice(1).join(' ')            
+            console.log(onlyIngredients)
+        
+        this.ingredient = sortedIngredient;
         this.getIngredient(this.ingredient);
         
     });
