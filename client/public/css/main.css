@@ -30,11 +30,12 @@
 
   .search { grid-area: search; }
 
-    textarea {
+    .search #ingredient-form input{
       justify-items: center;
       text-align: center;
       font-size: 20px;
       resize: none;
       border: 2px solid #2f2f2f;
     }
+    
   .results { grid-area: results; }
