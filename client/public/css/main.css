@@ -34,10 +34,9 @@
 /* SEARCH */
   .search { grid-area: search;
   border-radius: 10px;
-	overflow: hidden;
 	background: whitesmoke;
 	box-shadow:  0 2px 4px 0 hsla(0,0%,0%,0.1);
-  padding: 0px;
+  padding: 1rem;
   }
     .search #just-typed {
       color: hsl(0,0%,13%);
