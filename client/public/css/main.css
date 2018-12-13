@@ -1,19 +1,23 @@
   body {
     text-align: center;
-    background: cream;
+    background: rgb(234, 237, 241);
   }
-  
+/* GRID */
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
     grid-template-rows: 0.5fr 1fr 1fr;
+    grid-gap: 1rem;
     grid-template-areas: 
         "header header calories"
         "search results diary" 
         "search results diary";
   }
-
-  .header { grid-area: header; }
+/* HEADER */
+  .header { grid-area: header;
+  justify-content: center;
+  align-content: center; 
+  padding: 10%;}
 
   .calories { grid-area: calories; }
       .circle {
@@ -26,16 +30,50 @@
         -webkit-border-radius: 60px;
         border-radius: 60px;      
     }
-  .diary { grid-area: diary; }
+ 
+/* SEARCH */
+  .search { grid-area: search;
+  
+  border-radius: 10px;
+	overflow: hidden;
+	background: whitesmoke;
+	box-shadow:  0 2px 4px 0 hsla(0,0%,0%,0.1);
+  padding: 10px;
 
-  .search { grid-area: search; }
+  }
 
     .search #ingredient-form input{
-      justify-items: center;
-      text-align: center;
-      font-size: 20px;
-      resize: none;
-      border: 2px solid #2f2f2f;
+      font-size: 1.25rem;
+      background-color: hsl(220,12%,95%);
+      box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1);
+      /* box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1); */
+      padding: 0.5rem;
     }
-    
-  .results { grid-area: results; }
+
+/* RESULTS */
+    .results { grid-area: results; 
+      border-radius: 10px;
+      overflow: hidden;
+      background: whitesmoke;
+      box-shadow:  0 2px 4px 0 hsla(0,0%,0%,0.1);
+      padding: 10px;
+      
+    }
+  
+      .results #results {
+        font-size: 3rem;
+        color: hsl(0, 0%, 13%);
+        font-weight: 800;
+      }
+
+/* DIARY */
+    .diary { grid-area: diary; 
+      border-radius: 10px;
+	overflow: hidden;
+  background: whitesmoke;
+  box-shadow:  0 2px 4px 0 hsla(0,0%,0%,0.1);
+	/* box-shadow: 0 13px 27px -5px rgb; */
+  padding: 10px;
+    }
+
+ 
