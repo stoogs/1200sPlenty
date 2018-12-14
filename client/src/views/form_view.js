@@ -1,16 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const FormView = function (element) {
-    this.element = element;   
+const FormView = function (ingredientForm) {
+    this.ingredientForm = ingredientForm;   
 };
 
 FormView.prototype.bindEvents = function() {
-        this.element.addEventListener('submit', (event) => {
+        this.ingredientForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const inputtedText = event.target.text.value;
         // console.log(inputtedText);
         PubSub.publish('IngredientForm:inputtedText', inputtedText);
-        this.element.reset();
+        this.ingredientForm.reset(); //reset form values
     });
 };
 

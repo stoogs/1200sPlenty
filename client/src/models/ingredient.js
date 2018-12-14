@@ -12,12 +12,6 @@ const Ingredient = function () {
   Ingredient.prototype.bindEvents = function(searched) {
     PubSub.subscribe('IngredientForm:inputtedText', (event) => {
         let sortedIngredient = event.detail;
-        let arraySortedIngredient = sortedIngredient.split(' ');
-        let quantity = arraySortedIngredient[0];
-        console.log("quantity", quantity)
-        let onlyIngredients = arraySortedIngredient.slice(1).join(' ')            
-        console.log(onlyIngredients) 
-
         this.ingredient = sortedIngredient;
         this.getIngredient(this.ingredient);
         
@@ -32,12 +26,12 @@ const Ingredient = function () {
         .then((data) => {
             this.data = data;
             //publish ingredients to results view
-            PubSub.publish('Ingredient:api-results', this.data);
+            PubSub.publish('Ingredient:api-results', this.data);    
         })
         .catch((message) => {
             console.error(message);
         });
-};
+    };
 };
 
 module.exports = Ingredient;
