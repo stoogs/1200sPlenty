@@ -9,9 +9,9 @@
     grid-template-rows: 0.5fr 1fr 1fr;
     grid-gap: 1rem;
     grid-template-areas: 
-        "header header calories"
+        "header header  calories"
         "search results diary" 
-        "... ... diary";
+        "manual ...     diary";
   }
 /* HEADER */
   .header { grid-area: header;
@@ -26,8 +26,6 @@
         width: 120px;
         height: 120px;
         background: green;
-        -moz-border-radius: 60px;
-        -webkit-border-radius: 60px;
         border-radius: 60px;      
     }
  
@@ -56,6 +54,13 @@
           padding: 0.5rem;
         }
 
+  .manual { grid-area: manual;
+    border-radius: 10px;
+    background: whitesmoke;
+    box-shadow:  0 2px 4px 0 hsla(0,0%,0%,0.1);
+    padding: 10px;
+  }
+
 /* RESULTS */
     .results { grid-area: results; 
       border-radius: 10px;
@@ -64,35 +69,35 @@
       padding: 10px;
     }
 
-    .results .container {
+    .results-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr ;
       grid-template-areas: "Result Result Result Result" 
                            "Quantity food-name food-name calories" 
-                           ". . . ." 
-                           ". . . .";
+                           ".        .         .         ." 
+                           ".        .         .         ." ;                   
     }
     
-    .results .container #result-result { grid-area: Result; 
+    .results-container #result-result { grid-area: Result; 
         font-size: 3rem;
         color: hsl(0, 0%, 13%);
         font-weight: 800;
         max-height: 1%;
     }
     
-    .results .container #result-quantity  { grid-area: Quantity; 
+    .results-container #result-quantity  { grid-area: Quantity; 
       color: hsl(0,0%,13%);
       font-size: 2rem;
       padding: 1rem;
     }
     
-    .results .container #result-food-name { grid-area: food-name; 
+    .results-container #result-food-name { grid-area: food-name; 
       color: hsl(0,0%,13%);
       font-size: 2rem;
       padding: 1rem;}
     
-    .results .container #result-calories { grid-area: calories; 
+    .results-container #result-calories { grid-area: calories; 
       color: hsl(0,0%,13%);
       font-size: 2rem;
       padding: 1rem;}

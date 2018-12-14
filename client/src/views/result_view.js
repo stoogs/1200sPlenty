@@ -1,11 +1,10 @@
 const PubSub = require('../helpers/pub_sub.js');
-const Ingredient = require('../models/ingredient.js');
-const ResultView = function(resultContainer) {
-    this.resultContainer = resultContainer;
-    this.ingredientFound = "started empty";
-    this.chosenFood = "started empty";
+const ResultView = function(searchResultContainer) {
+    this.src = searchResultContainer;
+    this.ingredientFound = "subscribed to Ingredient:api-results";
+    this.chosenFood = "subscribed to IngredientForm:inputtedText";
+    this.infoArray = "consolidated from key info";
 };
-
 
 ResultView.prototype.bindEvents = function () {
     console.log("Result view bindEvents Function");
@@ -16,20 +15,22 @@ ResultView.prototype.bindEvents = function () {
     PubSub.subscribe('IngredientForm:inputtedText', (event) => {
         this.chosenFood = event.detail
     });
+    
+
 };
 
 ResultView.prototype.render = function(){
-    
-    this.displayText();
-    this.displayResult();
+    this.displayText(); //Show searched for item in Results Card
+    this.displayResult(); //Change color of Heading 'Result to suit calories'
+    this.addToDiaryButton(); //create button to publish to Diary Model
 };
 
 ResultView.prototype.displayResult = function(){
-
-    let heading = document.getElementById("result-result")
+    let heading = document.getElementById("result-result") 
     heading.textContent = "";
     headingHeader = document.createElement('h4')
     headingHeader.textContent = "Result";
+
         if(this.ingredientFound.calories > 400) {
             headingHeader.style.color = "red";
         } else if(this.ingredientFound.calories > 300) {
@@ -37,7 +38,6 @@ ResultView.prototype.displayResult = function(){
         } else { headingHeader.style.color = "green";
         }
     heading.appendChild(headingHeader);
-    // document.getElementById("result-quantity").textContent = `${quantity}`;
     }
 
 ResultView.prototype.displayText = function(){
@@ -52,8 +52,20 @@ ResultView.prototype.displayText = function(){
     document.getElementById("result-food-name").textContent = `${chosenFood}`;
     // let displayText = `${chosenFood} has ${calories} calories and weighs ${weight}grams`;
     document.getElementById("result-calories").textContent = `${calories} calories + ${dietLabel}`;
-    
-    console.log(dietLabel)
-    }
+    this.infoArray = [quantity,chosenFood,calories,weight,dietLabel];
+    // PubSub.publish('ResultView:infoArray', this.infoArray); 
+}
+
+    ResultView.prototype.addToDiaryButton = function(){   
+
+        let button = document.getElementById("addtoDiaryButton");
+        button.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log('clicked');
+        //button on click
+        PubSub.publish('ResultView:infoArray', this.infoArray);
+    })
+};
+
 
 module.exports = ResultView;

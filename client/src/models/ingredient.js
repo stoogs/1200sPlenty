@@ -31,7 +31,7 @@ const Ingredient = function () {
         .catch((message) => {
             console.error(message);
         });
-};
+    };
 };
 
 module.exports = Ingredient;
