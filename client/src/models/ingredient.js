@@ -12,6 +12,7 @@ const Ingredient = function () {
   Ingredient.prototype.bindEvents = function(searched) {
     PubSub.subscribe('IngredientForm:inputtedText', (event) => {
         let sortedIngredient = event.detail;
+        console.log(sortedIngredient)
         this.ingredient = sortedIngredient;
         this.getIngredient(this.ingredient);
         
