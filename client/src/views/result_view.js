@@ -15,6 +15,10 @@ ResultView.prototype.bindEvents = function () {
     PubSub.subscribe('IngredientForm:inputtedText', (event) => {
         this.chosenFood = event.detail
     });
+    PubSub.subscribe('IngredientForm:mealType', (event) => {
+        let mealType = event.detail;
+        console.log("meal Type is ", mealType);
+    });
     
 
 };
