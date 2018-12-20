@@ -32,10 +32,14 @@
       <input type=text id="text" placeholder="search food..." rows="1" cols="30" maxlength="30"></input>
       <input type="submit" value="Search"/>
     </form>
-    <div id="just-typed"></div>
-      <div id="search-results">
 
-      </div>
+    <h4>Meal Time</h4>
+      <input type="radio" name="meal_time" value="Breakfast" checked="checked"/> Breakfast
+      <input type="radio" name="meal_time" value="Lunch" /> Lunch
+      <input type="radio" name="meal_time" value="Dinner" /> Dinner
+      <input type="radio" name="meal_time" value="Snack" /> Snack
+      <div id="just-typed" style="visibility:hidden" >Searched For...</div>
+      <div id="search-results"></div>
   </div>
 
   <!-- MANUAL -->
