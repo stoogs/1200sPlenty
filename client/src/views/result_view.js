@@ -47,16 +47,15 @@ ResultView.prototype.displayResult = function(){
 ResultView.prototype.displayText = function(){
     let quantity = this.chosenFood.split(' ')[0];   
     let chosenFood = this.chosenFood.split(' ').slice(1, this.chosenFood.length).join(' ');
-    let calories = this.ingredientFound.calories;
-    let weight = this.ingredientFound.totalWeight;
-    let dietLabel = this.ingredientFound.dietLabels;
-    console.log( chosenFood,calories,weight,dietLabel);
-    // this.resultContainer.innerHTML = '';
+    let { calories, totalWeight, dietLabels }  = this.ingredientFound;  //destructuring
+    
     document.getElementById("result-quantity").textContent = `${quantity}`;
     document.getElementById("result-food-name").textContent = `${chosenFood}`;
     // let displayText = `${chosenFood} has ${calories} calories and weighs ${weight}grams`;
-    document.getElementById("result-calories").textContent = `${calories} calories + ${dietLabel}`;
-    this.infoArray = [quantity,chosenFood,calories,weight,dietLabel];
+    document.getElementById("result-calories").textContent = `${calories}`;
+    document.getElementById("result-weight").textContent = `${totalWeight} grams`;
+    document.getElementById("result-diet-label").textContent = `TAG: ${dietLabels}`;
+    this.infoArray = [quantity,chosenFood,calories,totalWeight,dietLabels];
     // PubSub.publish('ResultView:infoArray', this.infoArray); 
 }
 
