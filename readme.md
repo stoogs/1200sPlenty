@@ -1,10 +1,12 @@
-npm run server:dev
 
-this loads nodemon app.js
+sudo npm install
+Manually add apiKeys file // gitignored
+
+npm run build
+npm run server:dev
 
 requires
 
-npm install
+packages required, npm install / run build should handle this.
 npm install express webpack webpack-cli nodemon
-npm run build
-npm start
+// npm start // replaced by nodemon.
