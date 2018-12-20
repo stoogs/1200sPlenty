@@ -30,9 +30,8 @@ ResultView.prototype.render = function(){
 };
 
 ResultView.prototype.displayResult = function(){
-    let heading = document.getElementById("result-result") 
-    heading.textContent = "";
-    headingHeader = document.createElement('h4')
+    let heading = document.getElementById("result-result") ;
+    headingHeader = document.createElement('h4');
     headingHeader.textContent = "Result";
 
         if(this.ingredientFound.calories > 400) {
@@ -41,6 +40,7 @@ ResultView.prototype.displayResult = function(){
             headingHeader.style.color = "orange";
         } else { headingHeader.style.color = "green";
         }
+        heading.textContent = "";
     heading.appendChild(headingHeader);
     }
 

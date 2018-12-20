@@ -8,14 +8,13 @@ const Ingredient = function () {
     this.Api_Id = ApiKeys.api_id;
     this.Api_Key = ApiKeys.api_key 
   };
-  
+
   Ingredient.prototype.bindEvents = function(searched) {
     PubSub.subscribe('IngredientForm:inputtedText', (event) => {
         let sortedIngredient = event.detail;
         console.log(sortedIngredient)
         this.ingredient = sortedIngredient;
-        this.getIngredient(this.ingredient);
-        
+        this.getIngredient(this.ingredient);  
     });
     
     Ingredient.prototype.getIngredient = function (ingredient) {

@@ -7,7 +7,6 @@ const DiaryView = function(diary) {
 
 
 DiaryView.prototype.bindEvents = function () {
-    
         PubSub.subscribe('ResultView:infoArray', (event) => {
             this.diaryArray = event.detail;
             console.log("diary SUB", this.diaryArray);
