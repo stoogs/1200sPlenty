@@ -20,7 +20,6 @@ ResultView.prototype.bindEvents = function () {
         console.log("meal Type is ", mealType);
     });
     
-
 };
 
 ResultView.prototype.render = function(){
