@@ -4,6 +4,7 @@ const ResultView = function(searchResultContainer) {
     this.ingredientFound = "subscribed to Ingredient:api-results";
     this.chosenFood = "subscribed to IngredientForm:inputtedText";
     this.infoArray = "consolidated from key info";
+    this.recipes = ["array","of","recipes"]
 };
 
 ResultView.prototype.bindEvents = function () {
@@ -12,14 +13,17 @@ ResultView.prototype.bindEvents = function () {
         this.ingredientFound = event.detail; 
         this.render(this.ingredientFound)
     });
-    PubSub.subscribe('IngredientForm:inputtedText', (event) => {
-        this.chosenFood = event.detail
+            PubSub.subscribe('IngredientForm:inputtedText', (event) => {
+            this.chosenFood = event.detail
     });
-    PubSub.subscribe('IngredientForm:mealType', (event) => {
-        let mealType = event.detail;
-        console.log("meal Type is ", mealType);
+            PubSub.subscribe('IngredientForm:mealType', (event) => {
+            let mealType = event.detail;
     });
-    
+            PubSub.subscribe('Recipe:api-results', (event) => {
+            this.recipes = event.detail;
+            this.renderRecipes();
+
+});
 };
 
 ResultView.prototype.render = function(){
@@ -69,5 +73,27 @@ ResultView.prototype.displayText = function(){
     })
 };
 
+ResultView.prototype.renderRecipes = function(){
+    const { calories,dietLabels, healthLabels, ingredientLines, label, source, totalTime, totalWeight,image, totalDaily, totalNutrients, url, uri } = this.recipes.hits[0].recipe;
+    let aside = document.querySelector(".recipe-card")
+  console.log(label)
+    aside.innerHTML = `
+  <aside>
+		<img src="${image}" alt="" />
+		<a href="${uri}" class="button"><span class="icon icon-play"></span></a>
+	</aside>
+	<article>
+		<h2>${label}</h2>
+		<h3><a href="${url}">${source}</h3></a>
+        <ul>
+        <li><span class="icon icon-users"></span><span>4</span></li>
+			<li><span class="icon icon-clock"></span><span>${totalTime}</span></li>
+			<li><span class="icon icon-calories"></span><span>${calories}</span></li>
+		</ul>
+		<p>${ingredientLines}</p>
+		<p class="ingredients"><span>${dietLabels}, ${healthLabels}</p>`
+  
+
+}
 
 module.exports = ResultView;

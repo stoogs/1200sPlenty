@@ -28,11 +28,13 @@
   </div>
   <!-- SEARCH -->
   <div class="search">
+    
+    <h4>Search Ingredient...</h4>
     <form id="ingredient-form">
       <input type=text id="text" placeholder="search food..." rows="1" cols="30" maxlength="30"></input>
       <input type="submit" value="Search"/>
     </form>
-
+ 
     <h4>Meal Time</h4>
       <input type="radio" name="meal_time" value="Breakfast" checked="checked"/> Breakfast
       <input type="radio" name="meal_time" value="Lunch" /> Lunch
@@ -41,7 +43,7 @@
       <div id="just-typed" style="visibility:hidden" >Searched For...</div>
       <div id="search-results"></div>
 
-    <h4>Recipe Search</h4>
+    <h3>Recipe Search</h3>
       <form id="recipe-form">
         <input type=text id="text" placeholder="search recipes..." rows="1" cols="30" maxlength="30"></input>
         <input type="submit" value="Search"/>
@@ -55,6 +57,12 @@
   
   <!-- RESULTS -->
   <div class="results">
+
+      <div class="recipe-card">
+        
+           
+      </div>
+
     <div class="results-container">
       <div id="result-result"></div>
       <div id="result-quantity"></div>
@@ -63,9 +71,8 @@
       <div id="result-weight"></div>
       <div id="result-diet-label"></div>
     </div>
-    <button id="addtoDiaryButton">Add</button>
-
-  
+    <button id="addtoDiaryButton">Add To Diary</button>
+    <!-- RECIPE -->
   </div>
 <!-- GRID CONTAINER END-->  
 </div> 

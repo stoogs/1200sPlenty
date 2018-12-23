@@ -13,7 +13,7 @@ const Recipe = function () {
     PubSub.subscribe('RecipeForm:inputtedText', (event) => {
         let recipeSearch = event.detail;
         console.log('subbed to recipe model', recipeSearch)
-        this.ingredient = recipeSearch;
+        this.recipe = recipeSearch;
         this.getRecipe(this.recipe);  
     });
     
