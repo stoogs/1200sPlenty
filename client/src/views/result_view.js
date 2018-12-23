@@ -74,10 +74,14 @@ ResultView.prototype.displayText = function(){
 };
 
 ResultView.prototype.renderRecipes = function(){
-    const { calories,dietLabels, healthLabels, ingredientLines, label, source, totalTime, totalWeight,image, totalDaily, totalNutrients, url, uri } = this.recipes.hits[0].recipe;
     let aside = document.querySelector(".recipe-card")
-  console.log(label)
-    aside.innerHTML = `
+    for(let i = 0; i<5; i++) {
+        
+        const { calories,dietLabels, healthLabels, ingredientLines, 
+                label, source, totalTime, totalWeight,image, totalDaily, 
+                totalNutrients, url, uri } = this.recipes.hits[i].recipe;
+    
+    aside.innerHTML += `
   <aside>
 		<img src="${image}" alt="" />
 		<a href="${uri}" class="button"><span class="icon icon-play"></span></a>
@@ -91,9 +95,9 @@ ResultView.prototype.renderRecipes = function(){
 			<li><span class="icon icon-calories"></span><span>${calories}</span></li>
 		</ul>
 		<p>${ingredientLines}</p>
-		<p class="ingredients"><span>${dietLabels}, ${healthLabels}</p>`
-  
-
+		<p class="ingredients"><span>${dietLabels}, ${healthLabels}</p>
+        <button id="addtoDiaryButton">Add To Diary</button>`
+    }
 }
 
 module.exports = ResultView;

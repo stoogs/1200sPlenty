@@ -6,7 +6,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-rows: 0.5fr 1fr 1fr;
+    /* grid-template-rows: 0.5fr 1fr 1fr; */
     grid-gap: 1rem;
     grid-template-areas: 
         "header header  calories"
