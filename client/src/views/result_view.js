@@ -62,21 +62,25 @@ ResultView.prototype.displayText = function(){
     // PubSub.publish('ResultView:infoArray', this.infoArray); 
 }
 
-    ResultView.prototype.addToDiaryButton = function(){   
-
-        let button = document.getElementById("addtoDiaryButton");
-        button.addEventListener('click', (event) => {
-        event.preventDefault();
-        console.log('clicked');
-        //button on click
-        PubSub.publish('ResultView:infoArray', this.infoArray);
-    })
-};
+// ResultView.prototype.addToDiaryButton = function(){   
+    
+//     let button = document.getElementById("addtoDiaryButton");
+//     button.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     console.log('clicked');
+//     //button on click
+//     PubSub.publish('ResultView:infoArray', this.infoArray);
+//     })
+// };
 
 ResultView.prototype.renderRecipes = function(){
+    let button =''
+    
     let aside = document.querySelector(".recipe-card")
-    for(let i = 0; i<5; i++) {
-        
+    let numOfRecipes = this.recipes.hits.length;
+
+    for(let i = 0; i<numOfRecipes; i++) {
+        let servings = this.recipes.hits[i].recipe.yield
         let { calories,dietLabels, healthLabels, ingredientLines, 
                 label, source, totalTime, totalWeight,image, totalDaily, 
                 totalNutrients, url, uri } = this.recipes.hits[i].recipe;
@@ -84,20 +88,23 @@ ResultView.prototype.renderRecipes = function(){
     aside.innerHTML += `
   <aside>
 		<img src="${image}" alt="" />
-		<a href="${uri}" class="button"><span class="icon icon-play"></span></a>
+		<a href="${uri}" class="buttonplay"><span class="icon icon-play"></span></a>
 	</aside>
-	<article>
+    <article>
+    <h6>${i}</h6>
 		<h2>${label}</h2>
 		<h3><a href="${url}">${source}</h3></a>
         <ul>
-        <li><span class="icon icon-users"></span><span>4</span></li>
-			<li><span class="icon icon-clock"></span><span>${totalTime}</span></li>
-			<li><span class="icon icon-calories"></span><span>${calories}</span></li>
+        <li><span class="fas fa-chart-pie"></span><span>${this.recipes.hits[i].recipe.yield}</span></li>
+			<li><span class="far fa-clock"></span><span>${totalTime}</span></li>
+			<li><span class="fas fa-burn"></span><span>${calories}</span></li>
 		</ul>
 		<p>${ingredientLines}</p>
 		<p class="ingredients"><span>${dietLabels}, ${healthLabels}</p>
         <button id="addtoDiaryButton">Add To Diary</button>`
-    }
+        button = document.querySelector('addToDiaryButton')
+    
+}
 }
 
 module.exports = ResultView;

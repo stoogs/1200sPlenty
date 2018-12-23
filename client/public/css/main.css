@@ -127,9 +127,7 @@
 /* **************************** */
 /* RECIPE CARD */
 /* **************************** */
-
-@import "bourbon";
-
+/* //credit to https://codepen.io/klesht/pen/pjjegK?editors=1010 */
 .recipe-card {
 	@include box-sizing(border-box);
 }
@@ -252,7 +250,7 @@
 	    width: 16px;
 	    height: 19px;
 	}
-
+ 
   .recipe-card article	.icon-clock,.icon-clock\:regular {
 	    background-position: 0 -19px;
 	    width: 20px;
