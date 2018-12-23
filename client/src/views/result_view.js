@@ -77,10 +77,10 @@ ResultView.prototype.renderRecipes = function(){
     let aside = document.querySelector(".recipe-card")
     for(let i = 0; i<5; i++) {
         
-        const { calories,dietLabels, healthLabels, ingredientLines, 
+        let { calories,dietLabels, healthLabels, ingredientLines, 
                 label, source, totalTime, totalWeight,image, totalDaily, 
                 totalNutrients, url, uri } = this.recipes.hits[i].recipe;
-    
+    if(totalTime === 0 ? totalTime = "n/a" : totalTime +=" mins.")
     aside.innerHTML += `
   <aside>
 		<img src="${image}" alt="" />
