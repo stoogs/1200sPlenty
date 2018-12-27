@@ -20,14 +20,20 @@
   padding: 0%;}
 
   .calories { grid-area: calories; }
-      .circle {
-        display: flex;
+      
+  svg {
+        /* display: flex;
         margin: 10px 0px 10px 120px ;
         width: 120px;
         height: 120px;
         background: green;
-        border-radius: 60px;      
-    }
+        border-radius: 60px;       */
+        height: 200px;
+      }
+
+    /* .circle {
+      height: 200px; // the contents will scale to fit because of viewBox
+    } */
  
 /* SEARCH */
   .search { grid-area: search;
@@ -274,3 +280,4 @@
 	    width: 18px;
 	    height: 18px;
 	}
+

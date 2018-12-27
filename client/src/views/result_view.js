@@ -62,16 +62,16 @@ ResultView.prototype.displayText = function(){
     // PubSub.publish('ResultView:infoArray', this.infoArray); 
 }
 
-// ResultView.prototype.addToDiaryButton = function(){   
+ResultView.prototype.addToDiaryButton = function(){   
     
-//     let button = document.getElementById("addtoDiaryButton");
-//     button.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     console.log('clicked');
-//     //button on click
-//     PubSub.publish('ResultView:infoArray', this.infoArray);
-//     })
-// };
+    let button = document.getElementById("addtoDiaryButton");
+    button.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('clicked');
+    //button on click
+    PubSub.publish('ResultView:infoArray', this.infoArray);
+    })
+};
 
 ResultView.prototype.renderRecipes = function(){
     let button =''
