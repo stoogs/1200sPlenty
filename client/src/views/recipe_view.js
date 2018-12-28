@@ -8,7 +8,7 @@ const RecipeView = function (recipeForm) {
 };
 
 RecipeView.prototype.bindEvents = function () {
-    this.recipeForm.addEventListener('submit', (event) => {
+        this.recipeForm.addEventListener('submit', (event) => {
         event.preventDefault();
         console.log('clicked recipe button',event.target.text.value)
         this.inputtedText = event.target.text.value;
