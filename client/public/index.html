@@ -7,20 +7,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="css/main.css" rel="stylesheet">
     <script src="js/bundle.js"></script>
-</head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  </head>
 
 <body>
   <!-- GRID CONTAINER -->
   <div class="grid-container">
   <!-- HEADER -->
   <div class="header">
-    <img src="media/images/1200sPlentyLogoSVG.svg">
+    <img width=50% src="media/images/1200sPlentyLogoSVG.svg">
   </div> 
   <!-- CALORIES -->
-  <div class="calories">
+   <div class="calories"> 
     <div class="circle"></div>
-    <h1>Calories</h1>
-  </div>
+    <svg viewBox="-1 -1 2 2" style="transform: rotate(-90deg)"></svg>
+      <script>const svgEl = document.querySelector('svg');
+        const slices = [
+          { percent: 0.5, color: 'Coral' },
+          { percent: 0.4, color: 'CornflowerBlue' },
+          { percent: 0.1, color: '#00ab6b' },
+        ];
+        let cumulativePercent = 0;
+        
+        function getCoordinatesForPercent(percent) {
+          const x = Math.cos(2 * Math.PI * percent);
+          const y = Math.sin(2 * Math.PI * percent);
+          return [x, y];
+        }
+        
+        slices.forEach(slice => {
+          // destructuring assignment sets the two variables at once
+          const [startX, startY] = getCoordinatesForPercent(cumulativePercent);
+          
+          // each slice starts where the last slice ended, so keep a cumulative percent
+          cumulativePercent += slice.percent;
+          
+          const [endX, endY] = getCoordinatesForPercent(cumulativePercent);
+        
+          // if the slice is more than 50%, take the large arc (the long way around)
+          const largeArcFlag = slice.percent > .5 ? 1 : 0;
+        
+          // create an array and join it just for code readability
+          const pathData = [
+            `M ${startX} ${startY}`, // Move
+            `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`, // Arc
+            `L 0 0`, // Line
+          ].join(' ');
+        
+          // create a <path> and append it to the <svg> element
+          const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          pathEl.setAttribute('d', pathData);
+          pathEl.setAttribute('fill', slice.color);
+          svgEl.appendChild(pathEl);
+        });</script>
+    
+    <h1>Calories</h1> -->
+  </div> -->
   <!-- DIARY -->
   <div class="diary">
     <h1>Diary</h1>
@@ -28,11 +70,13 @@
   </div>
   <!-- SEARCH -->
   <div class="search">
+    
+    <h4>Search Ingredient...</h4>
     <form id="ingredient-form">
       <input type=text id="text" placeholder="search food..." rows="1" cols="30" maxlength="30"></input>
       <input type="submit" value="Search"/>
     </form>
-
+ 
     <h4>Meal Time</h4>
       <input type="radio" name="meal_time" value="Breakfast" checked="checked"/> Breakfast
       <input type="radio" name="meal_time" value="Lunch" /> Lunch
@@ -40,6 +84,14 @@
       <input type="radio" name="meal_time" value="Snack" /> Snack
       <div id="just-typed" style="visibility:hidden" >Searched For...</div>
       <div id="search-results"></div>
+
+    <h3>Recipe Search</h3>
+      <form id="recipe-form">
+        <input type=text id="text" placeholder="search recipes..." rows="1" cols="30" maxlength="30"></input>
+        <input type="submit" value="Search"/>
+      </form>
+
+    
   </div>
 
   <!-- MANUAL -->
@@ -47,17 +99,12 @@
   
   <!-- RESULTS -->
   <div class="results">
-    <div class="results-container">
+      <div id="result-header"></div>
+      <div class="recipe-card"></div>
+      <div class="results-container">
       <div id="result-result"></div>
-      <div id="result-quantity"></div>
-      <div id="result-food-name"></div>
-      <div id="result-calories"></div>
-      <div id="result-weight"></div>
-      <div id="result-diet-label"></div>
     </div>
-    <button id="addtoDiaryButton">Add</button>
-
-  
+    <!-- RECIPE -->
   </div>
 <!-- GRID CONTAINER END-->  
 </div> 

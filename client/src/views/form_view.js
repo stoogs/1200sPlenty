@@ -4,12 +4,14 @@ const FormView = function (ingredientForm) {
     this.inputtedText = "";
     this.ingredientForm = ingredientForm;
     this.searchHistory = [];
+    this.mealType= "Breafkast";
 };
 
 FormView.prototype.bindEvents = function () {
-    this.ingredientForm.addEventListener('submit', (event) => {
+        this.ingredientForm.addEventListener('submit', (event) => {
         event.preventDefault();
         this.inputtedText = event.target.text.value;
+        this.radioButtons();
         PubSub.publish('IngredientForm:inputtedText', this.inputtedText);
         this.ingredientForm.reset(); //reset form values
         this.render();
@@ -17,7 +19,7 @@ FormView.prototype.bindEvents = function () {
 };
 
 FormView.prototype.render = function () {
-    this.radioButtons();
+    // this.radioButtons();
     this.makeSearchList();
     this.clickPreviousItem();
 };
@@ -27,7 +29,9 @@ FormView.prototype.radioButtons = function () {
     for (let i = 0; i < radioButtons.length; i++) {
         console.log(radioButtons[i].checked)
         radioButtons[i].onclick = function () {
-            this.mealType = this.value; 
+            console.log(radioButtons[i].checked)
+            console.log(radioButtons[i])
+            this.mealType = this.value;
             PubSub.publish('IngredientForm:mealType', this.mealType);
         }
     };

@@ -1,6 +1,6 @@
 const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
-const ApiKeys = require('../../public/media/apikeys/apikeys.js');
+const ApiKeys = require('../../public/media/apikeys/ingredientapikeys.js');
 
 const Ingredient = function () {
     this.data = null;
