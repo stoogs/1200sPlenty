@@ -8,7 +8,7 @@ app.get('/', function(req,res){
     res.sendFile(__dirname + '/client/public');
 });
 
-app.listen(3003, function() {
+app.listen(process.env.PORT || 3003, function() {
     console.log('App running on port 3002');
 });
 

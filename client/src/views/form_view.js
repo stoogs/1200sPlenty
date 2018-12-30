@@ -31,8 +31,7 @@ FormView.prototype.radioButtons = function () {
         radioButtons[i].onclick = function () {
             console.log(radioButtons[i].checked)
             console.log(radioButtons[i])
-
-            this.mealType = this.value; 
+            this.mealType = this.value;
             PubSub.publish('IngredientForm:mealType', this.mealType);
         }
     };
